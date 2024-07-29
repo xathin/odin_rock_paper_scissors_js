@@ -11,19 +11,29 @@
 
             switch (choice) {
                 case 0:
-                    return "Rock";
+                    return "rock";
                     break;
                 case 1:
-                    return "Paper";
+                    return "paper";
                     break;
                 case 2:
-                    return "Scissors";
+                    return "scissors";
                     break;
             }
         }
 
-        for (let i = 0; i < 100; i++) {
-            console.log(getComputerChoice());
+        function getHumanChoice() {
+            var choice = null;
+
+            while (choice == null || (choice != "rock" && choice != "paper" && choice != "scissor")) {
+                choice = prompt("What do you choose? (Rock, Paper, Scissor) ").toLowerCase();
+            }
+
+            return choice
+        }
+
+        for (let i = 0; i < 3; i++) {
+            console.log(getHumanChoice());
         }
     </script>
 </head>
