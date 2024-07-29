@@ -17,7 +17,7 @@
                     return "paper";
                     break;
                 case 2:
-                    return "scissors";
+                    return "scissor";
                     break;
             }
         }
@@ -32,9 +32,35 @@
             return choice
         }
 
-        for (let i = 0; i < 3; i++) {
-            console.log(getHumanChoice());
+        function toTitleString(str) {
+            return str.replace(
+                /\w\S*/g,
+                text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+            );
         }
+
+        var humanScore = 0;
+        var computerScore = 0;
+
+        function playRound(humanChoice, computerChoice) {
+            if ((humanChoice == "rock" && computerChoice == "scissor") || (humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "scissor" && computerChoice == "paper")) {
+                console.log(`You win! ${toTitleString(humanChoice)} beats ${toTitleString(computerChoice)}`);
+                humanScore++;
+            } else if (humanChoice == computerChoice) {
+                console.log(`No winner! ${toTitleString(humanChoice)} matches ${toTitleString(computerChoice)}`);
+            } else {
+                console.log(`You lose! ${toTitleString(computerChoice)} beats ${toTitleString(humanChoice)}`);
+                computerScore++;
+            }
+        }
+
+        var humanChoice = getHumanChoice();
+        var computerChoice = getComputerChoice();
+
+        playRound(humanChoice, computerChoice);
+
+        console.log(`You're score: ${humanScore}`);
+        console.log(`Computer score: ${computerScore}`);
     </script>
 </head>
 
